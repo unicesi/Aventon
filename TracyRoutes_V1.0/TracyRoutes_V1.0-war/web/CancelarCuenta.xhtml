@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : welcomeICEfaces
+    Created on : 03-mar-2011, 10:47:04
+    Author     : Administrador
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:icecore="http://www.icefaces.org/icefaces/core"
+       xmlns:ace="http://www.icefaces.org/icefaces/components"
+       xmlns:ice="http://www.icesoft.com/icefaces/component"
+       >
+    <h:head>
+        <title>Tracy Routes</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+    <h:body>
+        <div id="header">
+           <!--
+           <ui:include src="/header.xhtml" >
+	          <ui:param name="param_name" value="param_value" />
+           </ui:include>
+           -->
+        </div>
+         <div id="content">
+<ice:form>
+<center>
+
+					<ice:panelBorder border="0" style="height: 600px; width: 800px">
+						<f:facet name="north">
+						<center>
+<ice:panelPopup modal="true" autoCentre="true"
+                visible="#{cancelarCuenta.visibe}"
+										>
+										<f:facet name="header">
+											<ice:outputText value="Tracy Routes dice : "></ice:outputText>
+										</f:facet>
+										<f:facet name="body">
+											<ice:panelGrid>
+												<ice:outputText value="Desae Eliminar Su cuenta"
+													></ice:outputText>
+
+                                                                                            <ice:commandButton partialSubmit="true" value="SI"
+                                                                                                                   actionListener="#{cancelarCuenta.Si}"></ice:commandButton>
+
+                                                                                                                   						<ice:commandButton partialSubmit="true" value="NO"
+                                                                                                                   actionListener="#{cancelarCuenta.No }"></ice:commandButton>
+												<br />
+												<br />
+
+											</ice:panelGrid>
+										</f:facet>
+									</ice:panelPopup>
+
+						<ice:panelGrid border="0">
+							<ice:panelGrid columns="1">
+								<center>
+								<embed src="bannerv2.swf" quality="high" bgcolor="#4682B4" WIDTH="800" HEIGHT="200">
+											</embed>
+								</center>
+							</ice:panelGrid>
+
+						</ice:panelGrid>
+</center>
+
+						</f:facet>
+						<f:facet name="west">
+						<ice:panelGrid columns="4">
+							<ice:menuBar id="menuBar" orientation="Vertical"
+							style="cursor: hand; font-size: 12px">
+								<ice:menuItem value="Inicio" link="index.jsf"></ice:menuItem>
+								<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Usuario ">
+                                                            <ice:menuItem value="Modificar Datos" link="EditarUsuario.jsf">
+								</ice:menuItem>
+                                                            <ice:menuItem value="Cancelar Cuenta" link="CancelarCuenta.jsf">
+								</ice:menuItem>
+							</ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Vehiculos" link="Vehiculos.jsf"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Rutas" link="Rutas.jsf"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Solicitud de Servicio" link="Servicio.jsf"></ice:menuItem>
+
+<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Calficacion de Servicio" link="Calficaccion.jsf"></ice:menuItem>
+
+
+						</ice:menuBar>
+
+
+</ice:panelGrid>
+												</f:facet>
+
+						<f:facet name="south">
+						<center>
+								<ice:panelGrid columns="2">
+									<ice:panelGrid columns="2">
+										<ice:outputText value="Usuario en Linea: "></ice:outputText>
+
+										<ice:outputText
+											value="#{rutaBean.usuario.codigo}  #{rutaBean.usuario.nombres}"></ice:outputText>
+									</ice:panelGrid>
+									<center>
+										<ice:outputLink value="inicio.jsf">
+											<ice:outputText value="Cerrar Session ">
+											</ice:outputText>
+										</ice:outputLink>
+										</center>
+							</ice:panelGrid>
+						</center>
+
+						</f:facet>
+					</ice:panelBorder>
+					</center>
+				</ice:form>
+                   </div>
+    </h:body>
+</html>

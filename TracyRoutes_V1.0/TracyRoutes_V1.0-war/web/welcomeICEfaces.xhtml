@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : welcomeICEfaces
+    Created on : 03-mar-2011, 10:47:04
+    Author     : Administrador
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:icecore="http://www.icefaces.org/icefaces/core"
+       xmlns:ace="http://www.icefaces.org/icefaces/components"
+       xmlns:ice="http://www.icesoft.com/icefaces/component"
+       >
+    <h:head>
+        <title>ICEfaces 2</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+    <h:body>
+        <div id="header">
+           <!--
+           <ui:include src="/header.xhtml" >
+	          <ui:param name="param_name" value="param_value" />
+           </ui:include>
+           -->
+        </div>
+         <div id="content">
+
+            <ice:form>
+<center>
+
+					<ice:panelBorder border="0" style="height: 600px; width: 800px">
+						<f:facet name="north">
+						<center>
+
+						<ice:panelGrid border="0">
+							<ice:panelGrid columns="1">
+								<center>
+
+								</center>
+							</ice:panelGrid>
+
+						</ice:panelGrid>
+</center>
+
+						</f:facet>
+						<f:facet name="west">
+						<ice:panelGrid columns="4">
+							<ice:menuBar id="menuBar" orientation="Vertical"
+							style="cursor: hand; font-size: 12px">
+								<ice:menuItem value="Inicio" link="index.jspx"></ice:menuItem>
+								<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Usuario ">
+								<ice:menuItem value="Modificar Datos">
+								</ice:menuItem>
+								<ice:menuItem value="Cancelar Cuenta">
+								</ice:menuItem>
+							</ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Vehiculos" link="Vehiculos.jspx"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Rutas" link="Rutas.jspx"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Solicitud de Servicio" link="Servicio.jspx"></ice:menuItem>
+
+
+
+						</ice:menuBar>
+
+
+</ice:panelGrid>
+												</f:facet>
+
+
+                                            <f:facet name="center">
+                                                <ice:panelCollapsible expanded="true" toggleOnClick="false">
+                                                    <ice:commandButton actionListener="#{bean.action}" value="boton"></ice:commandButton>
+
+                                                </ice:panelCollapsible>
+                                            </f:facet>
+
+						<f:facet name="south">
+						<center>
+								<ice:panelGrid columns="2">
+									<ice:panelGrid columns="2">
+										<ice:outputText value="Usuario en Linea: "></ice:outputText>
+
+										</ice:panelGrid>
+									<center>
+										<ice:outputLink value="inicio.jspx">
+											<ice:outputText value="Cerrar Session ">
+											</ice:outputText>
+										</ice:outputLink>
+										</center>
+							</ice:panelGrid>
+						</center>
+
+						</f:facet>
+					</ice:panelBorder>
+					</center>
+				</ice:form>
+         </div>
+    </h:body>
+</html>

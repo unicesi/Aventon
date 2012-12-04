@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : welcomeICEfaces
+    Created on : 03-mar-2011, 10:47:04
+    Author     : Administrador
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:icecore="http://www.icefaces.org/icefaces/core"
+       xmlns:ace="http://www.icefaces.org/icefaces/components"
+       xmlns:ice="http://www.icesoft.com/icefaces/component"
+       >
+    <h:head>
+        <title>Tracy Routes</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+    <h:body style="background-color:4682B4">
+        <center>
+
+
+        <ice:form>
+<center>
+
+				<ice:panelBorder style="height: 600px; width: 800px">
+						<f:facet name="north">
+						<center>
+
+						<ice:panelGrid border="0">
+
+								<embed src="bannerv2.swf" quality="high" bgcolor="#4682B4" WIDTH="800" HEIGHT="200">
+
+											</embed>
+
+
+
+						</ice:panelGrid>
+</center>
+
+						</f:facet>
+						<f:facet name="west">
+		<ice:menuBar id="menuBar" orientation="Vertical"
+							style="cursor: hand; font-size: 12px">
+								<ice:menuItem value="Inicio" link="index.jsf"></ice:menuItem>
+								<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Usuario ">
+                                                            <ice:menuItem value="Modificar Datos" link="EditarUsuario.jsf">
+								</ice:menuItem>
+                                                            <ice:menuItem value="Cancelar Cuenta" link="CancelarCuenta.jsf">
+								</ice:menuItem>
+							</ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Vehiculos" link="Vehiculos.jsf"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Rutas" link="Rutas.jsf"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Solicitud de Servicio" link="Servicio.jsf"></ice:menuItem>
+
+<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Calficacion de Servicio" link="Calficaccion.jsf"></ice:menuItem>
+
+
+						</ice:menuBar>
+						</f:facet>
+						<f:facet name="east">
+
+						</f:facet>
+						<f:facet name="center">
+								<ice:panelSeries value="bindingValue">
+
+								<ice:panelCollapsible toggleOnClick="true" expanded="true">
+									<f:facet name="header">
+
+										<ice:panelGroup>
+											<ice:outputText id="linkHeader" value="Solicitud De Servicio" />
+
+										</ice:panelGroup>
+									</f:facet>
+
+
+									<ice:panelPopup visible="false" modal="true" autoCentre="true" binding="#{servicioBean.panelPopUp}" style="z-index: 0; top: 100%; left: 10%; position: absolute; width: 300px;">
+						<f:facet name="header">
+							<ice:outputText value="Mensaje"></ice:outputText>
+						</f:facet>
+						<f:facet name="body">
+
+						<ice:panelGroup>
+
+                                                    <center><ice:outputText value="#{servicioBean.panelPopUpMensaje}" style="font-size: 14px"></ice:outputText></center>
+					    <br />
+						<center><ice:commandButton  partialSubmit="true" value="Aceptar" actionListener="#{servicioBean.clickBotonPopUp}"></ice:commandButton></center>
+
+						</ice:panelGroup>
+
+						</f:facet>
+					</ice:panelPopup>
+
+									<ice:panelTabSet binding="#{servicioBean.panelTablaSolicitud}" tabPlacement="Top">
+
+										<ice:panelTab rendered="true" label="Filtro De Rutas" title="Filtro De Rutas">
+
+									<ice:panelGrid columns="4">
+
+									<ice:outputText value="Tipo Usuario:"></ice:outputText>
+						<ice:selectOneMenu binding="#{servicioBean.selectOneMenuTiposUsuarios}" value="#{servicioBean.tiposUsuarios}" style="width: 154px; height: 26px">
+							<f:selectItem itemValue="0" itemLabel="Todos" />
+							<f:selectItem itemValue="1" itemLabel="Estudiantes" />
+							<f:selectItem itemValue="2" itemLabel="Profesores" />
+							<f:selectItem itemValue="3" itemLabel="Administrativos" />
+						</ice:selectOneMenu>
+						<ice:outputText value="Sexo:"></ice:outputText>
+						<ice:selectOneMenu binding="#{servicioBean.selectOneMenuSexo}" value="#{servicioBean.sexo}" style="width: 154px; height: 26px">
+							<f:selectItem itemValue="t" itemLabel="Todos" />
+							<f:selectItem itemValue="m" itemLabel="Maculino" />
+							<f:selectItem itemValue="f" itemLabel="Femenino" />
+						</ice:selectOneMenu>
+						<ice:outputText value="Zona:"></ice:outputText>
+						<ice:selectOneMenu binding="#{servicioBean.selectOneMenuZonas}" value="#{servicioBean.zonas}" style="width: 154px; height: 26px">
+						<f:selectItems value="#{servicioBean.listaItemsZonas}"/>
+						</ice:selectOneMenu>
+						<ice:outputText value="Edad Inicial:"></ice:outputText>
+						<ice:inputText binding="#{servicioBean.inputTextEdadInicial}" value="#{servicioBean.edadInicial}" style="width: 148px"></ice:inputText>
+						<ice:outputText value="Edad Final:"></ice:outputText>
+						<ice:inputText binding="#{servicioBean.inputTextEdadFinal}" value="#{servicioBean.edadFinal}" style="width: 148px"></ice:inputText>
+						<ice:outputText value="Fecha:"></ice:outputText>
+						<ice:selectInputDate tabindex="1"
+													binding="#{servicioBean.selectInputDateFecha}" renderMonthAsDropdown="true"
+													renderYearAsDropdown="true"
+													value="#{servicioBean.validarSelectInputDateFecha.date2}"
+													valueChangeListener="#{servicioBean.validarSelectInputDateFecha.effect2ChangeListener}"
+													renderAsPopup="true"
+													>
+													<f:convertDateTime pattern="MM/dd/yyyy HH:mm"
+														timeZone="#{servicioBean.validarSelectInputDateFecha.timeZone}" />
+
+												</ice:selectInputDate>
+
+									</ice:panelGrid>
+
+									<center><br /><ice:commandButton value="Filtrar" actionListener="#{servicioBean.clickBotonFiltrar}" style="z-index: auto"></ice:commandButton></center>
+
+                                  </ice:panelTab>
+
+                                  <ice:panelTab binding="#{servicioBean.panelTabRutasFiltradas}" rendered="true" disabled="true" label="Rutas Filtradas" title="Rutas Filtradas">
+
+							<ice:panelBorder>
+
+							<f:facet name="center">
+							<ice:panelGrid>
+                                                            <ice:selectOneRadio value="#{servicioBean.value}" partialSubmit="true" valueChangeListener="#{servicioBean.selectRadio}"   binding="#{servicioBean.radio}">
+
+                                                                <f:selectItems value="#{servicioBean.item}">
+                                                                </f:selectItems>
+                                                            </ice:selectOneRadio>
+							</ice:panelGrid>
+							</f:facet>
+
+							<f:facet name="east">
+
+							<ice:panelGrid>
+
+							<ice:panelGrid visible="false" binding="#{servicioBean.panelRutaSeleccionada}" columns="2" border="5">
+
+           <ice:outputText value="Usuario:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.usuarioS}"> </ice:outputText>
+           <ice:outputText value="Descripcion:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.descripcionS}"> </ice:outputText>
+           <ice:outputText value="Fecha:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.fechaS}"> </ice:outputText>
+           <ice:outputText value="Vehiculo:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.vehiculoS}"> </ice:outputText>
+           <ice:outputText value="Precio:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.precioS}"> </ice:outputText>
+           <ice:outputText value="Cupo:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.cupoS}"> </ice:outputText>
+
+       
+           </ice:panelGrid>
+
+
+
+           <ice:panelGrid visible="false" binding="#{servicioBean.panelPuntoIntermedioSeleccionado}"  columns="2" border="5">
+
+           <ice:outputText value="Zona:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.zonaS}"> </ice:outputText>
+           <ice:outputText value="Direccion:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.direccionS}"> </ice:outputText>
+           <ice:outputText value="Detalle:"> </ice:outputText>
+           <ice:outputText value="#{servicioBean.detalleS}"> </ice:outputText>
+
+
+           
+           </ice:panelGrid>
+
+							</ice:panelGrid>
+
+							</f:facet>
+
+                                                            					<f:facet name="south">
+
+							<ice:panelGrid>
+
+                                                            <ice:panelGrid  visible="#{servicioBean.panelRutaSeleccionada.visible}">
+
+           <ice:gMap   zoomLevel="6" locateAddress="true" latitude="3.4" longitude="-76" >
+            <ice:gMapControl name="GLargeMapControl" rendered="true"/>
+            <ice:gMapControl name="GScaleControl" rendered="true"/>
+            <ice:gMapControl name="GMapTypeControl" rendered="true"/>
+            <ice:gMapMarker>
+            <ice:gMapLatLngs value="#{servicioBean.puntosMapa}"/>
+
+            </ice:gMapMarker>
+
+        </ice:gMap>
+           </ice:panelGrid>
+                                                        </ice:panelGrid></f:facet>
+
+
+							</ice:panelBorder>
+
+
+									<center><br /><ice:commandButton value="Solicitar" actionListener="#{servicioBean.guardarSolicitud}" style="z-index: auto"></ice:commandButton></center>
+
+                                  </ice:panelTab>
+
+                                                      
+
+								 </ice:panelTabSet>
+
+
+								</ice:panelCollapsible>
+
+
+
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+
+
+						</ice:panelSeries>
+						</f:facet>
+						<f:facet name="south">
+						<center>
+									<ice:panelGrid columns="2">
+										<ice:outputText value="Usuario en Linea: "></ice:outputText>
+
+										<ice:outputText
+											value="#{rutaBean.usuario.codigo}  #{rutaBean.usuario.nombres}"></ice:outputText>
+									</ice:panelGrid>
+									<center>
+										<ice:outputLink value="inicio.jsf">
+											<ice:outputText value="Cerrar Session ">
+											</ice:outputText>
+										</ice:outputLink>
+										</center>
+
+						</center>
+
+						</f:facet>
+					</ice:panelBorder>
+					</center>
+				</ice:form>
+
+
+        </center>
+    </h:body>
+</html>

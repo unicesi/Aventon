@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : welcomeICEfaces
+    Created on : 03-mar-2011, 10:47:04
+    Author     : Administrador
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:icecore="http://www.icefaces.org/icefaces/core"
+       xmlns:ace="http://www.icefaces.org/icefaces/components"
+       xmlns:ice="http://www.icesoft.com/icefaces/component"
+       >
+    <h:head>
+        <title>Tracy Routes</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+    <h:body>
+        <div id="header">
+           <!--
+           <ui:include src="/header.xhtml" >
+	          <ui:param name="param_name" value="param_value" />
+           </ui:include>
+           -->
+        </div>
+         <div id="content">
+<ice:form>
+<center>
+
+					<ice:panelBorder border="0" style="height: 600px; width: 800px">
+						<f:facet name="north">
+						<center>
+
+						<ice:panelGrid border="0">
+							<ice:panelGrid columns="1">
+								<center>
+								<embed src="bannerv2.swf" quality="high" bgcolor="#4682B4" WIDTH="800" HEIGHT="200">
+											</embed>
+								</center>
+							</ice:panelGrid>
+
+						</ice:panelGrid>
+</center>
+
+						</f:facet>
+						<f:facet name="west">
+						<ice:panelGrid columns="4">
+								<ice:menuBar id="menuBar" orientation="Vertical"
+							style="cursor: hand; font-size: 12px">
+								<ice:menuItem value="Inicio" link="index.jsf"></ice:menuItem>
+								<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Usuario ">
+                                                            <ice:menuItem value="Modificar Datos" link="EditarUsuario.jsf">
+								</ice:menuItem>
+                                                            <ice:menuItem value="Cancelar Cuenta" link="CancelarCuenta.jsf">
+								</ice:menuItem>
+							</ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Vehiculos" link="Vehiculos.jsf"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Rutas" link="Rutas.jsf"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Solicitud de Servicio" link="Servicio.jsf"></ice:menuItem>
+
+<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Calficacion de Servicio" link="Calficaccion.jsf"></ice:menuItem>
+
+
+						</ice:menuBar>
+
+
+</ice:panelGrid>
+
+
+                                                </f:facet>
+<f:facet name="center">
+
+ <ice:panelCollapsible toggleOnClick="false" expanded="true">
+										<f:facet name="header">
+											<ice:panelGroup>
+												<ice:outputText  value="Datos Basicos" />
+											</ice:panelGroup>
+			
+                                                                                </f:facet>
+
+
+
+
+     <ice:panelPopup visible="#{calificarBean.visible}" modal="true" autoCentre="true"  style="z-index: 0; top: 100%; left: 10%; position: absolute; width: 300px;">
+						<f:facet name="header">
+							<ice:outputText value="Mensaje"></ice:outputText>
+						</f:facet>
+						<f:facet name="body">
+
+						<ice:panelGroup>
+
+                                                    <center><ice:outputText value="#{calificarBean.mensaje}" style="font-size: 14px"></ice:outputText></center>
+					    <br />
+                                            <center><ice:commandButton  partialSubmit="true" value="Aceptar" actionListener="#{calificarBean.clickBotonPopUp}"></ice:commandButton></center>
+
+						</ice:panelGroup>
+
+						</f:facet>
+					</ice:panelPopup>
+
+     		<ice:panelGrid columns="2">
+
+
+			   <ice:outputText value="Ruta"/>
+											<ice:selectOneMenu tabindex="0"
+														value="#{calificarBean.codRutaValor}"
+														binding="#{calificarBean.codRuta}">
+														<f:selectItems value="#{calificarBean.listaItemsRutas}" />
+													</ice:selectOneMenu>
+
+
+				</ice:panelGrid>
+
+				<ice:panelGrid columns="3">
+						<ice:outputText value="Puntualidad"/>
+<ice:selectOneRadio value="#{calificarBean.puntualidadValor}" binding="#{calificarBean.puntualidad}">
+  <f:selectItem itemLabel="1" itemValue="1" />
+  <f:selectItem itemLabel="2" itemValue="2" />
+  <f:selectItem itemLabel="3" itemValue="3" />
+  <f:selectItem itemLabel="4" itemValue="4" />
+  <f:selectItem itemLabel="5" itemValue="5" />
+</ice:selectOneRadio>
+
+<ice:outputText value="Califique la puntualidad basandose en el cumplimiento de la hora de salida y llegada de la ruta."/>
+
+<ice:outputText value="Comodidad"/>
+<ice:selectOneRadio value="#{calificarBean.comodidadValor}" binding="#{calificarBean.comodidad}">
+  <f:selectItem itemLabel="1" itemValue="1" />
+  <f:selectItem itemLabel="2" itemValue="2" />
+  <f:selectItem itemLabel="3" itemValue="3" />
+  <f:selectItem itemLabel="4" itemValue="4" />
+  <f:selectItem itemLabel="5" itemValue="5" />
+</ice:selectOneRadio>
+
+<ice:outputText value="Califique en base a que tan comodo se sintio durante el transcurso de la ruta."/>
+
+
+
+
+
+
+<ice:outputText value="Seguridad"/>
+<ice:selectOneRadio value="#{calificarBean.seguridadValor}" binding="#{calificarBean.seguridad}">
+  <f:selectItem itemLabel="1" itemValue="1" />
+  <f:selectItem itemLabel="2" itemValue="2" />
+  <f:selectItem itemLabel="3" itemValue="3" />
+  <f:selectItem itemLabel="4" itemValue="4" />
+  <f:selectItem itemLabel="5" itemValue="5" />
+</ice:selectOneRadio>
+
+<ice:outputText value="Califique la seguridad del viaje basandose en la prudencia con la que manejo el conductor y el estado del vehiculo."/>
+					</ice:panelGrid>
+<br/>
+<ice:outputText value="Si tiene algun comentario, escribalo a continuacion:"/>
+<ice:inputTextarea style="width: 600; height: 70px" value="#{calificarBean.comentarioValor}" binding="#{calificarBean.comentario}"></ice:inputTextarea>
+									<br/><br/>
+                                                                        <ice:commandButton value="Enviar Evaluacion" actionListener="#{calificarBean.action}"></ice:commandButton>
+
+ </ice:panelCollapsible>
+</f:facet>
+
+                                            <f:facet name="south">
+						<center>
+								<ice:panelGrid columns="2">
+									<ice:panelGrid columns="2">
+										<ice:outputText value="Usuario en Linea: "></ice:outputText>
+
+										<ice:outputText
+											value="#{rutaBean.usuario.codigo}  #{rutaBean.usuario.nombres}"></ice:outputText>
+									</ice:panelGrid>
+									<center>
+										<ice:outputLink value="inicio.jsf">
+											<ice:outputText value="Cerrar Session ">
+											</ice:outputText>
+										</ice:outputLink>
+										</center>
+							</ice:panelGrid>
+						</center>
+
+						</f:facet>
+					</ice:panelBorder>
+					</center>
+				</ice:form>
+                   </div>
+    </h:body>
+</html>

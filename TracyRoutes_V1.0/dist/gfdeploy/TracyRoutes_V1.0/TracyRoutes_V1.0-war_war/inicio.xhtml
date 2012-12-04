@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : welcomeICEfaces
+    Created on : 03-mar-2011, 10:47:04
+    Author     : Administrador
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:icecore="http://www.icefaces.org/icefaces/core"
+       xmlns:ace="http://www.icefaces.org/icefaces/components"
+       xmlns:ice="http://www.icesoft.com/icefaces/component"
+       >
+    <h:head>
+        <title>TracyRoute</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+    <h:body>
+        <div id="header">
+           <!--
+           <ui:include src="/header.xhtml" >
+	          <ui:param name="param_name" value="param_value" />
+           </ui:include>
+           -->
+        </div>
+         <div id="content">
+            <ice:form>
+
+<center>
+						<ice:panelBorder style="height: 600px; width: 800px">
+							<f:facet name="north">
+								<center>
+
+									<ice:panelGrid border="0">
+										<ice:panelGrid columns="1">
+											<center>
+
+
+	<embed src="bannerv2.swf" quality="high" bgcolor="#4682B4" WIDTH="800" HEIGHT="200">
+
+											</embed>
+
+
+											</center>
+										</ice:panelGrid>
+
+									</ice:panelGrid>
+								</center>
+
+							</f:facet>
+							<f:facet name="west">
+
+
+							</f:facet>
+							<f:facet name="east">
+
+							</f:facet>
+							<f:facet name="center">
+								<ice:panelSeries value="bindingValue">
+
+
+									<ice:panelPopup modal="true" autoCentre="true"
+                                                                                        visible="#{inicioBean.visible}"
+										>
+										<f:facet name="header">
+											<ice:outputText value="Tracy Routes dice : "></ice:outputText>
+										</f:facet>
+										<f:facet name="body">
+											<ice:panelGrid>
+												<ice:outputText value="Usuario Autenticado"
+													style="font-size: 14px"></ice:outputText>
+
+                                                <ice:outputLink value="index.jsf">
+											<ice:outputText value="OK">
+											</ice:outputText>
+										</ice:outputLink>						<br />
+												<br />
+
+											</ice:panelGrid>
+										</f:facet>
+									</ice:panelPopup>
+
+									<ice:panelCollapsible toggleOnClick="false" expanded="true">
+										<f:facet name="header">
+											<ice:panelGroup>
+
+											</ice:panelGroup>
+										</f:facet>
+										<center>
+
+										</center>
+
+										<center>
+										<ice:outputText value="Inicio de Sesión" style="color: #FF0000"></ice:outputText>
+						<ice:panelGrid columns="3">
+
+
+						<ice:outputText value="Codigo o Cedula"></ice:outputText>
+						<ice:panelGrid>
+						<ice:inputText id="cedula" binding="#{inicioBean.codigo}" value="#{inicioBean.codigoValor}" required="true">
+						</ice:inputText></ice:panelGrid>
+						<ice:message id="cedulaError" for="cedula"></ice:message>
+
+						<ice:outputText value="Password"></ice:outputText>
+						<ice:panelGrid>
+						<ice:inputSecret binding="#{inicioBean.contraseña}" value="#{inicioBean.contraseñaValor}" required="true"></ice:inputSecret>
+						</ice:panelGrid>
+
+						<br />
+						</ice:panelGrid>
+                                                                                <ice:commandButton value="Inicio" binding="#{inicioBean.boton}" actionListener="#{inicioBean.validarUsuario}"> </ice:commandButton>
+						<br />
+						<ice:outputText value="El codigo o contraseña son incorrectos" style="color: #FF0000" rendered="#{inicioBean.visible}"></ice:outputText>
+
+						<br />
+
+						<a href="registro.jsf">Registrate</a>
+
+
+
+
+										</center>
+
+									</ice:panelCollapsible>
+
+
+
+
+
+
+
+
+
+
+
+								</ice:panelSeries>
+							</f:facet>
+							<f:facet name="south">
+								<center>
+
+								</center>
+
+							</f:facet>
+						</ice:panelBorder>
+					</center>
+				</ice:form>
+         </div>
+    </h:body>
+</html>

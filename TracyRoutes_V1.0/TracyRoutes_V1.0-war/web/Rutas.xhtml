@@ -1,0 +1,389 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : welcomeICEfaces
+    Created on : 03-mar-2011, 10:47:04
+    Author     : Administrador
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:icecore="http://www.icefaces.org/icefaces/core"
+       xmlns:ace="http://www.icefaces.org/icefaces/components"
+       xmlns:ice="http://www.icesoft.com/icefaces/component"
+       >
+    <h:head>
+        <title>Tracy Routes</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+    <h:body>
+        <div id="header">
+           <!--
+           <ui:include src="/header.xhtml" >
+	          <ui:param name="param_name" value="param_value" />
+           </ui:include>
+           -->
+        </div>
+         <div id="content">
+
+           <ice:form>
+					<center>
+
+						<ice:panelBorder style="height: 600px; width: 900px">
+							<f:facet name="north">
+								<center>
+
+									<ice:panelGrid border="0">
+									<embed src="bannerv2.swf" quality="high" bgcolor="#4682B4" WIDTH="800" HEIGHT="200">
+
+											</embed>
+
+									</ice:panelGrid>
+								</center>
+
+							</f:facet>
+							<f:facet name="west">
+									<ice:menuBar id="menuBar" orientation="Vertical"
+							style="cursor: hand; font-size: 12px">
+								<ice:menuItem value="Inicio" link="index.jsf"></ice:menuItem>
+								<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Usuario ">
+                                                            <ice:menuItem value="Modificar Datos" link="EditarUsuario.jsf">
+								</ice:menuItem>
+                                                            <ice:menuItem value="Cancelar Cuenta" link="CancelarCuenta.jsf">
+								</ice:menuItem>
+							</ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+							<ice:menuItem value="Vehiculos" link="Vehiculos.jsf"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Rutas" link="Rutas.jsf"></ice:menuItem>
+							<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Solicitud de Servicio" link="Servicio.jsf"></ice:menuItem>
+
+<ice:menuItemSeparator></ice:menuItemSeparator>
+
+							<ice:menuItem value="Calficacion de Servicio" link="Calficaccion.jsf"></ice:menuItem>
+
+
+						</ice:menuBar>
+
+							</f:facet>
+							<f:facet name="east">
+
+							</f:facet>
+							<f:facet name="center">
+								<ice:panelSeries value="bindingValue">
+
+
+<ice:panelPopup modal="true" autoCentre="true"
+											visible="#{rutaBean.visible}"
+											>
+											<f:facet name="header">
+												<ice:outputText value="Tracy Routes dice : "></ice:outputText>
+											</f:facet>
+											<f:facet name="body">
+												<ice:panelGrid>
+													<center>
+														<ice:outputText value="#{rutaBean.mensaje}"></ice:outputText>
+
+<br/>
+														<ice:commandButton partialSubmit="true" value="OK"
+															actionListener="#{rutaBean.actionok}"></ice:commandButton>
+													</center>
+													<br />
+													<br />
+
+												</ice:panelGrid>
+											</f:facet>
+										</ice:panelPopup>
+
+
+									<ice:panelCollapsible toggleOnClick="false" expanded="true">
+										
+
+										
+
+                                             <ice:panelCollapsible toggleOnClick="false" expanded="true">
+										<f:facet name="header">
+											<ice:panelGroup>
+												<ice:outputText  value="Datos Basicos" />
+											</ice:panelGroup>
+										</f:facet>
+												<ice:panelGrid columns="6">
+
+													<ice:outputText value="Vehiculo"></ice:outputText>
+													<ice:selectOneMenu tabindex="0"
+														
+														binding="#{rutaBean.vehiculo}">
+														<f:selectItems value="#{rutaBean.vehiculoslita}" />
+													</ice:selectOneMenu>
+													<ice:outputText value="Fecha"></ice:outputText>
+
+													<ice:selectInputDate tabindex="1"
+														binding="#{rutaBean.fecha}" renderMonthAsDropdown="true"
+														renderYearAsDropdown="true"
+														value="#{rutaBean.controlfecha.date2}"
+														valueChangeListener="#{rutaBean.controlfecha.effect2ChangeListener}"
+														renderAsPopup="true">
+														<f:convertDateTime pattern="MM/dd/yyyy HH:mm"
+															timeZone="#{rutaBean.controlfecha.timeZone}" />
+
+													</ice:selectInputDate>
+													<ice:outputText value="Descripcion"></ice:outputText>
+                                                                                                        <ice:inputText  value="#{rutaBean.desValor}"
+                                                                                                                        binding="#{rutaBean.descipcion}"
+														></ice:inputText>
+
+													<ice:outputText value="Tiene Precio"></ice:outputText>
+													<ice:selectBooleanCheckbox
+														value="#{rutaBean.tienePrecioValor}"
+														binding="#{rutaBean.tienePrecio}" partialSubmit="true"
+														valueChangeListener="#{rutaBean.cambioTienePrecio}">
+
+													</ice:selectBooleanCheckbox>
+
+													<ice:outputText value="       Precio"></ice:outputText>
+													<ice:inputText binding="#{rutaBean.precio}"
+                                                                                                                       value="#{rutaBean.precioValor}"></ice:inputText>
+
+													<ice:outputText value="Cupo Disponible"></ice:outputText>
+													<ice:inputText binding="#{rutaBean.cupoDisponible}"
+														value="#{rutaBean.cupoDisponibleValor}"></ice:inputText>
+
+												</ice:panelGrid>
+                                                 </ice:panelCollapsible>
+
+
+                                                                                <br />
+										<br />
+
+                                             <ice:panelCollapsible toggleOnClick="false" expanded="true">
+										<f:facet name="header">
+											<ice:panelGroup>
+												<ice:outputText  value="Perfil de Pasajero" />
+											</ice:panelGroup>
+										</f:facet>
+                                                                                <ice:panelGrid columns="6">
+
+													<ice:outputText value="Edad Inicial"></ice:outputText>
+													<ice:inputText binding="#{rutaBean.edadInicial}"
+                                                                                                                       value="#{rutaBean.edadInicialValor}"></ice:inputText>
+
+													<ice:outputText value="Edad Maxima "></ice:outputText>
+													<ice:panelGrid columns="2">
+														<ice:inputText id="edadMaxima" partialSubmit="true"
+															value="#{rutaBean.edadFinalValor}"
+															binding="#{rutaBean.edadFinal}">
+
+														</ice:inputText>
+
+													</ice:panelGrid>
+													<ice:outputText value=" Sexo "></ice:outputText>
+													<ice:selectOneMenu binding="#{rutaBean.sexo}"
+														value="#{rutaBean.sexoValor}">
+														<f:selectItem itemLabel="Todos" itemValue="T" />
+														<f:selectItem itemLabel="Masculino" itemValue="M" />
+														<f:selectItem itemLabel="Femenino" itemValue="F" />
+
+													</ice:selectOneMenu>
+													<ice:outputText value=" Tipo Usuario "></ice:outputText>
+													<ice:selectOneMenu binding="#{rutaBean.tipoUsuario}"
+														value="#{rutaBean.tipoUsuarioValor}">
+														<f:selectItem itemLabel="Todos" itemValue="0" />
+														<f:selectItem itemLabel="Estudiantes" itemValue="1" />
+														<f:selectItem itemLabel="Profesor" itemValue="2" />
+														<f:selectItem itemLabel="Administrativo" itemValue="3" />
+
+													</ice:selectOneMenu>
+
+												</ice:panelGrid>
+
+                                             </ice:panelCollapsible>
+                                                                                <br />
+										<br />
+
+                                             <ice:panelCollapsible toggleOnClick="false" expanded="true">
+										<f:facet name="header">
+											<ice:panelGroup>
+												<ice:outputText  value="Puntos Intermedios " />
+											</ice:panelGroup>
+										</f:facet>
+											<ice:panelGrid columns="7">
+													<ice:outputText value="Direccion "></ice:outputText>
+													<ice:inputText binding="#{rutaBean.direccion}"
+														value="#{rutaBean.direccionValor}"></ice:inputText>
+													<ice:outputText value="Descripcion "></ice:outputText>
+													<ice:inputText binding="#{rutaBean.detalle}"
+														value="#{rutaBean.detalleValor}"></ice:inputText>
+
+													<ice:outputText value="Zona "></ice:outputText>
+													<ice:selectOneMenu binding="#{rutaBean.zona}"
+														value="#{rutaBean.zonaValor}">
+														<f:selectItems value="#{rutaBean.zonalist}" />
+													</ice:selectOneMenu>
+												</ice:panelGrid>
+												<center>
+
+                                                                                                    <ice:commandButton partialSubmit="true" 
+                                                                                                            actionListener="#{rutaBean.AgregarPuntoIntermedio}"
+														image="chulo.bmp"></ice:commandButton>
+													<br />
+													<br />
+
+													
+													<br />
+													<br />
+
+
+												</center>
+
+												<center>
+													<br />
+													<br />
+													<ice:dataPaginator id="data_scroll" for="puntos"
+														paginator="true" fastStep="2" paginatorMaxPages="10">
+
+														<f:facet name="first">
+
+															<ice:graphicImage
+																url="./xmlhttp/css/xp/css-images/arrow-first.gif"
+																style="border:none;" title="Primera Página" />
+
+														</f:facet>
+
+														<f:facet name="last">
+
+															<ice:graphicImage
+																url="./xmlhttp/css/xp/css-images/arrow-last.gif"
+																style="border:none;" title="Última Página" />
+
+														</f:facet>
+
+														<f:facet name="previous">
+
+															<ice:graphicImage
+																url="./xmlhttp/css/xp/css-images/arrow-previous.gif"
+																style="border:none;" title="Página Previa" />
+
+														</f:facet>
+
+														<f:facet name="next">
+
+															<ice:graphicImage
+																url="./xmlhttp/css/xp/css-images/arrow-next.gif"
+																style="border:none;" title="Siguiente Página" />
+
+														</f:facet>
+
+
+
+													</ice:dataPaginator>
+
+													<ice:dataTable id="puntos" 
+                                                                                                                       rows="5" border="1" rendered="true" value="#{rutaBean.puntos}"
+														var="puntosIntermedios">
+														<ice:column>
+															
+                                                                                                                    <ice:outputText value="#{puntosIntermedios.direccion}"></ice:outputText>
+
+
+
+															<f:facet name="header">
+																<ice:outputText value="Direccion"></ice:outputText>
+															</f:facet>
+
+														</ice:column>
+														<ice:column>
+
+															<ice:outputText value="#{puntosIntermedios.detalle}"></ice:outputText>
+
+
+
+															<f:facet name="header">
+																<ice:outputText value="Detalle"></ice:outputText>
+															</f:facet>
+
+														</ice:column>
+														<ice:column>
+
+															<ice:outputText value="#{puntosIntermedios.zona.nombre}"></ice:outputText>
+
+
+
+															<f:facet name="header">
+																<ice:outputText value="Zona"></ice:outputText>
+															</f:facet>
+
+														</ice:column>
+                                                                                                            		<ice:column>
+
+                                                                                                                            <ice:commandButton partialSubmit="true" value="#{puntosIntermedios}" actionListener="#{rutaBean.QuitarPunto}"
+														 image="eliminar_of.bmp"></ice:commandButton>
+
+
+
+															<f:facet name="header">
+																<ice:outputText value="Quitar"></ice:outputText>
+															</f:facet>
+
+														</ice:column>
+
+													</ice:dataTable>
+												</center>
+
+									</ice:panelCollapsible>
+										<center>
+												<ice:commandButton binding="#{rutaBean.finalizar}"
+														actionListener="#{rutaBean.ActionFinalizar}"
+														value="Finalizar"></ice:commandButton>
+
+										</center>
+										<br />
+										<br />
+										<center>
+											<ice:outputConnectionStatus style="height: 36px; width: 84px"></ice:outputConnectionStatus>
+										</center>
+
+									</ice:panelCollapsible>
+
+
+
+									<br />
+									<br />
+									<br />
+									<br />
+									<br />
+									<br />
+
+
+								</ice:panelSeries>
+							</f:facet>
+							<f:facet name="south">
+								<center>
+									<ice:panelGrid columns="2">
+										<ice:outputText value="Usuario en Linea: "></ice:outputText>
+
+										<ice:outputText
+											value="#{rutaBean.usuario.codigo}  #{rutaBean.usuario.nombres}"></ice:outputText>
+									</ice:panelGrid>
+									<center>
+										<ice:outputLink value="inicio.jsf">
+											<ice:outputText value="Cerrar Session ">
+											</ice:outputText>
+										</ice:outputLink>
+									</center>
+
+
+								</center>
+
+							</f:facet>
+						</ice:panelBorder>
+					</center>
+				</ice:form>
+
+         </div>
+    </h:body>
+</html>
